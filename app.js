@@ -1,9 +1,18 @@
 const mongoose=require("mongoose");
-mongoose.connect("mongodb://127.0.0.1:27017/softwareProject");
+mongoose.set('strictQuery',false);
+const PORT=process.env.PORT||3000
+//mongoose.connect("mongodb://127.0.0.1:27017/softwareProject");
+mongoose.connect("mongodb+srv://anmolraj029:SS2SvEyXZOi4RspL@cluster0.gavwnmd.mongodb.net/College_MIS")
+.then(()=>{
+    console.log("mongo connected")
+})
+.catch((err)=>{
+    console.log(err)
+})
+
 const express=require("express");
 const path=require("path");
 const app=express();
-const PORT=process.env.PORT||3000
 const bodyparser=require("body-parser");
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({extended:true}));
